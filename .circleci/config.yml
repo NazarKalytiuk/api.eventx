@@ -7,12 +7,12 @@ jobs:
             - checkout
             - restore_cache:
                 keys:
-                    - cache-server-{{ checksum "server/package.json" }}
+                    - cache-server-{{ checksum "package.json" }}
             - run:
                 name: Install NPM packages
                 command: npm install
             - save_cache:
-                key: cache-server-{{ checksum "server/package.json" }}
+                key: cache-server-{{ checksum "package.json" }}
                 paths:
                     - node_modules
             - run:
@@ -21,7 +21,7 @@ jobs:
                   sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893
                   sudo apt-get install apt-transport-https
                   sudo apt-get update && sudo apt-get install azure-cli
-                  
+
 workflows:
   version: 2
   build-deploy:
