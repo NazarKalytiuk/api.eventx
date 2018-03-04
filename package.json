@@ -4,6 +4,7 @@
   "description": "Nest TypeScript starter repository",
   "license": "MIT",
   "scripts": {
+    "prestart": "tsc",
     "start": "node index.js",
     "start:watch": "nodemon",
     "prestart:prod": "tsc",
