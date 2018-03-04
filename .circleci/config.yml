@@ -16,6 +16,9 @@ jobs:
                 paths:
                     - node_modules
             - run:
+                name: build
+                command: npm run build
+            - run:
                 name: Prepare ZIP file
                 command: zip dist/server.zip package.json && cd dist && zip server.zip -r * -x server.zip
             - run:
