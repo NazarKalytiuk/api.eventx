@@ -26,7 +26,7 @@ jobs:
                 command: sudo apt-get -y install python3-pip && sudo pip3 install --upgrade awscli awsebcli
             - run:
                 name: Deploy Server
-                command: eb deploy
+                command: eb deploy --profile default
 
 workflows:
   version: 2
