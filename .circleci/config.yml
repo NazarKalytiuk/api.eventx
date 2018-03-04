@@ -16,11 +16,14 @@ jobs:
                 paths:
                     - node_modules
             - run:
+                name: Prepare ZIP file
+                command: zip dist/server.zip package.json && cd dist && zip server.zip -r * -x server.zip
+            - run:
                 name: Install AWS and AWS EB CLI tools
-                command: |
-                  sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893
-                  sudo apt-get install apt-transport-https
-                  sudo apt-get update && sudo apt-get install azure-cli
+                command: sudo apt-get -y install python3-pip && sudo pip3 install --upgrade awscli awsebcli
+            - run:
+                name: Deploy Server
+                command: eb deploy
 
 workflows:
   version: 2
